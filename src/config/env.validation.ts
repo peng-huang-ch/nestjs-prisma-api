@@ -112,7 +112,10 @@ export class EnvironmentVariables {
 }
 
 export function validate(config: Record<string, string>) {
-  const validatedConfig = plainToInstance(EnvironmentVariables, config, { excludeExtraneousValues: true, exposeUnsetFields: false });
+  const validatedConfig = plainToInstance(EnvironmentVariables, config, {
+    excludeExtraneousValues: true,
+    exposeUnsetFields: false,
+  });
   const errors = validateSync(validatedConfig, {
     skipMissingProperties: false,
   });

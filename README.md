@@ -113,8 +113,7 @@ swagger
 
 ![prom](./docs/prom.jpg)
 
-`alerting`
-![prom](./docs/alert.jpg)
+`alerting` ![prom](./docs/alert.jpg)
 
 ## Thanks the following projects
 
