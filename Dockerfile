@@ -1,4 +1,4 @@
-FROM node:16 AS builder
+FROM node:18-alpine AS builder
 
 # Create app directory
 WORKDIR /app
@@ -14,11 +14,16 @@ COPY . .
 
 RUN npm run build
 
-FROM node:16
+FROM node:18-alpine
 
-COPY --from=builder /app/node_modules ./node_modules
+WORKDIR /app
+
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
+RUN npm pkg delete scripts.prepare && npm ci --omit=dev
+
+COPY --from=builder /app/node_modules/.prisma/client  ./node_modules/.prisma/client
+
 EXPOSE 3000
-CMD [ "npm", "run", "start:prod" ]
+CMD ["node", "dist/main.js"]

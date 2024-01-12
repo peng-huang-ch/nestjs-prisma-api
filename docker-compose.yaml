@@ -7,8 +7,6 @@ services:
     container_name: nest-api
     restart: unless-stopped
     ports:
-      - '3000:3000'
-    depends_on:
-      - nest-postgres
+      - '4000:4000'
     env_file:
       - .env
