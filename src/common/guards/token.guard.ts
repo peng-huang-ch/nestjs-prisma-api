@@ -10,16 +10,12 @@ export class TokenAuthGuard extends AuthGuard('jwt') {
     const token = jwtFromRequest()(request);
     if (!token) return true;
 
-    try {
-      const result = (await super.canActivate(context)) as boolean;
-      return result;
-    } catch (error) {
-      return false;
-    }
+    return (await super.canActivate(context)) as boolean;
   }
 
   handleRequest(err, user, info) {
     // You can throw an exception based on either "info" or "err" arguments
+    if (info) throw new UnauthorizedException(info?.message);
     if (err || !user) {
       throw err || new UnauthorizedException();
     }
