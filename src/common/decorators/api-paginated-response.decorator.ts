@@ -4,7 +4,7 @@ import { ApiBadRequestResponse, ApiExtraModels, ApiOkResponse, ApiProperty, getS
 import { Type as Transformer } from 'class-transformer';
 import { IsInt, IsOptional, IsString, Min } from 'class-validator';
 
-export enum OrderBy {
+export enum SortOrder {
   DESC = 'desc',
   ASC = 'asc',
 }
@@ -17,7 +17,7 @@ export function getPagination(pagination?: ApiPaginatedQuery, ext?: Partial<ApiP
   page = Math.max(+page || 1, 1);
 
   const sortBy = pagination?.sortBy || ext?.sortBy || 'createdAt';
-  const sortOrder = pagination?.orderBy || ext?.orderBy || OrderBy.DESC;
+  const sortOrder = pagination?.sortOrder || ext?.sortOrder || SortOrder.DESC;
   const options = { page, perPage, orderBy: { [sortBy]: sortOrder } };
   return options;
 }
@@ -42,10 +42,10 @@ export class ApiPaginatedQuery {
   @IsString()
   sortBy?: string;
 
-  @ApiProperty({ required: false, enum: OrderBy, example: 'desc', default: 'desc' })
+  @ApiProperty({ required: false, enum: SortOrder, example: 'desc', default: 'desc' })
   @IsOptional()
   @IsString()
-  orderBy?: string;
+  sortOrder?: string;
 }
 
 export const ApiPaginatedResponse = <TModel extends Type<any>>(model: TModel) => {
