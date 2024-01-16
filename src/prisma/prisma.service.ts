@@ -7,6 +7,11 @@ import { pagination } from 'prisma-extension-pagination';
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
   private readonly logger = new Logger('prisma');
+
+  // Extensions
+  public readonly stream = this.$extends(cursorStream);
+  public readonly pagination = this.$extends(pagination());
+
   constructor() {
     super({
       log: [
@@ -17,14 +22,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
       ],
       errorFormat: 'colorless',
     });
-  }
-
-  get stream() {
-    return this.$extends(cursorStream);
-  }
-
-  get pagination() {
-    return this.$extends(pagination());
   }
 
   async onModuleInit() {
