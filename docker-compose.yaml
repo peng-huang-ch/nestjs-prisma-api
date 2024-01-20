@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nest-api
     restart: unless-stopped
     ports:
       - '4000:4000'

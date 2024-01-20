@@ -26,8 +26,8 @@ This is an opinionated template for Nestjs prisma restful projects.
   - [x] [prometheus](https://prometheus.io/)
   - [x] [promtail](https://grafana.com/docs/loki/latest/send-data/promtail/)
   - [x] [tempo](https://grafana.com/docs/tempo/latest)
-  - [alertmanager](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/legacy-alerting/grafana-cloud-alerting/alertmanager/)
-- [ ] k8s
+  - [x] [alertmanager](https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/legacy-alerting/grafana-cloud-alerting/alertmanager/)
+- [x] k8s
 
 ## Guide
 
@@ -113,7 +113,11 @@ swagger
 
 ![prom](./docs/prom.jpg)
 
-`alerting` ![prom](./docs/alert.jpg)
+`alerting`
+![alert](./docs/alert.jpg)
+
+`k8s`
+![k8s](./docs/k8s.jpg)
 
 ## Thanks the following projects
 
