@@ -9,6 +9,6 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: TCP
-      port: 18000
-      targetPort: 3000
-      nodePort: 30003 # this is for when using type: NodePort
+      port: 14000
+      targetPort: 4000
+      nodePort: 30004 # this is for when using type: NodePort

@@ -119,6 +119,9 @@ swagger
 `k8s`
 ![k8s](./docs/k8s.jpg)
 
+`ingress`
+![ingress](./docs/ingress.jpg)
+
 ## Thanks the following projects
 
 - [nestjs-prisma](https://github.com/notiz-dev/nestjs-prisma)
