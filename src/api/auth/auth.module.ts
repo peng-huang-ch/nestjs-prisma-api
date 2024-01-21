@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
-import { getJwtConfig } from '@src/config';
+import { getJwtModuleOptions } from '@src/config';
 import { ServicesModule } from '@src/services';
 
 import { AuthController } from './auth.controller';
@@ -14,7 +14,7 @@ import { GoogleStrategy, JwtStrategy, LocalStrategy, SessionSerializer } from '.
     JwtModule.registerAsync({
       global: true,
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => getJwtConfig(configService),
+      useFactory: async (configService: ConfigService) => getJwtModuleOptions(configService),
       inject: [ConfigService],
     }),
     ServicesModule,

@@ -138,7 +138,7 @@ function getPinoHttpOption(level: string = 'info'): Options {
   };
 }
 
-export function getLoggerOptions(configService: ConfigService): Params {
+export function getLoggerModuleOptions(configService: ConfigService): Params {
   const app = configService.get('OTLP_SERVICE_NAME') || 'app';
   const level = configService.get('LOG_LEVEL') || 'info';
   const filename = configService.get('LOG_FILE');

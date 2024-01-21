@@ -11,7 +11,7 @@ export function getRedisModuleOptions(configService: ConfigService) {
   return { config: getRedisOpt(configService) };
 }
 
-export async function getCacheOptions(configService: ConfigService) {
+export async function getCacheModuleOptions(configService: ConfigService) {
   const opt = getRedisOpt(configService);
   const store = await redisStore(opt);
   return {

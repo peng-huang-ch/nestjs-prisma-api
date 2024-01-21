@@ -6,7 +6,7 @@ import { OpenTelemetryModule } from 'nestjs-otel';
 import { LoggerModule } from 'nestjs-pino';
 
 import { ApiModule } from '@src/api/api.module';
-import { getCacheOptions, getLoggerOptions, getOtelOptions, validate } from '@src/config';
+import { getCacheModuleOptions, getLoggerModuleOptions, getOtelOptions, validate } from '@src/config';
 
 @Module({
   imports: [
@@ -17,8 +17,8 @@ import { getCacheOptions, getLoggerOptions, getOtelOptions, validate } from '@sr
     CacheModule.registerAsync({
       isGlobal: true,
       imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => getCacheOptions(configService),
       inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => getCacheModuleOptions(configService),
     }),
     OpenTelemetryModule.forRootAsync({
       useFactory: async () => getOtelOptions(),
@@ -26,7 +26,7 @@ import { getCacheOptions, getLoggerOptions, getOtelOptions, validate } from '@sr
     LoggerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService) => getLoggerOptions(configService),
+      useFactory: async (configService) => getLoggerModuleOptions(configService),
     }),
     ApiModule,
   ],

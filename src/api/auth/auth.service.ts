@@ -6,15 +6,13 @@ import { User } from '@prisma/client';
 import { type Request } from 'express';
 import { OAuth2Client as GoogleOAuth2Client } from 'google-auth-library';
 import { pick } from 'lodash';
-import assert from 'node:assert/strict';
 
 import { getGoogleAppOptions } from '@src/config';
 import { UsersManager } from '@src/services';
 
 @Injectable()
 export class AuthService {
-  appleOpt: { [key: string]: any };
-  googleOpt: { scope: string[]; audience: string[] };
+  googleAppOptions: { scope: string[]; audience: string[] };
   googleOAuth2Client: GoogleOAuth2Client;
 
   constructor(
@@ -23,7 +21,7 @@ export class AuthService {
     private usersMgr: UsersManager,
   ) {
     this.googleOAuth2Client = new GoogleOAuth2Client();
-    this.googleOpt = getGoogleAppOptions(configService);
+    this.googleAppOptions = getGoogleAppOptions(configService);
   }
 
   async validateAdmin(username: string, password: string) {
@@ -35,7 +33,7 @@ export class AuthService {
   }
 
   get getAppScope() {
-    return this.googleOpt?.scope;
+    return this.googleAppOptions?.scope;
   }
 
   async getProfile(id: string) {
@@ -68,7 +66,7 @@ export class AuthService {
     try {
       const options = {
         idToken: req.body.token,
-        audience: this.googleOpt?.audience,
+        audience: this.googleAppOptions?.audience,
       };
       const ticket = await this.googleOAuth2Client.verifyIdToken(options);
       payload = ticket.getPayload();

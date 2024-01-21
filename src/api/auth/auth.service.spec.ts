@@ -3,7 +3,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { createMock } from '@golevelup/ts-jest';
 
-import { getJwtConfig } from '@src/config';
+import { getJwtModuleOptions } from '@src/config';
 import { UsersManager } from '@src/services';
 
 import { AuthService } from './auth.service';
@@ -18,7 +18,7 @@ describe('AuthService', () => {
         JwtModule.registerAsync({
           global: true,
           imports: [ConfigModule],
-          useFactory: async (configService: ConfigService) => getJwtConfig(configService),
+          useFactory: async (configService: ConfigService) => getJwtModuleOptions(configService),
           inject: [ConfigService],
         }),
       ],

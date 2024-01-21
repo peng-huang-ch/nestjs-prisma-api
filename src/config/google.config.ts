@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 
-export function getGoogleOAuth(configService: ConfigService) {
+export function getGoogleOAuthOptions(configService: ConfigService) {
   const clientID = configService.get('GOOGLE_CLIENT_ID');
   const clientSecret = configService.get('GOOGLE_SECRET');
   const callbackURL = configService.get('GOOGLE_CALLBACK');

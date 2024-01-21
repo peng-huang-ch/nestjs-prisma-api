@@ -5,7 +5,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { isEmpty } from 'lodash';
 import { Strategy } from 'passport-jwt';
 
-import { getJwtConfig, jwtFromRequest } from '@src/config';
+import { getJwtModuleOptions, jwtFromRequest } from '@src/config';
 
 import { AuthService } from '../auth.service';
 
@@ -15,11 +15,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     configService: ConfigService,
     private authService: AuthService,
   ) {
-    const config = getJwtConfig(configService);
+    const opt = getJwtModuleOptions(configService);
     super({
       jwtFromRequest: jwtFromRequest(),
       ignoreExpiration: false,
-      secretOrKey: config.secret,
+      secretOrKey: opt.secret,
     });
   }
 

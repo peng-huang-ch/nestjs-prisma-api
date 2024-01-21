@@ -6,7 +6,7 @@ export function jwtFromRequest() {
   return ExtractJwt.fromAuthHeaderAsBearerToken();
 }
 
-export function getJwtConfig(configServer: ConfigService) {
+export function getJwtModuleOptions(configServer: ConfigService) {
   const JWT_SECRET_KEY = configServer.get('JWT_SECRET_KEY');
   const JWT_EXPIRE_IN = configServer.get('JWT_EXPIRE_IN') || '7d';
 
