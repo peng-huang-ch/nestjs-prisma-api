@@ -7,7 +7,7 @@ export function getRedisOpt(configService: ConfigService) {
   return Object.assign({ maxRetriesPerRequest: 20 }, parseURL(configService.get('REDIS_URL')));
 }
 
-export function getRedisModuleOpt(configService: ConfigService) {
+export function getRedisModuleOptions(configService: ConfigService) {
   return { config: getRedisOpt(configService) };
 }
 

@@ -7,11 +7,6 @@ enum Environment {
   Test = 'test',
 }
 
-export enum ChainProvider {
-  BTC = 'btc',
-  ETH = 'eth',
-}
-
 export class EnvironmentVariables {
   @Expose()
   @IsString()
