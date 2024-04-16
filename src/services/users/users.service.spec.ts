@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PrismaClient, User } from '@prisma/client';
+import { Prisma, PrismaClient, User } from '@prisma/client';
 
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 
@@ -9,9 +9,8 @@ import { UsersService } from './users.service';
 
 describe('UsersService', () => {
   let service: UsersService;
-  // TODO remove it
-  // let prismaService: DeepMockProxy<PrismaClient>;
-  let prismaService: any;
+
+  let prismaService: DeepMockProxy<PrismaClient>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -37,9 +36,9 @@ describe('UsersService', () => {
       email: 'email',
       createdAt: new Date(),
       updatedAt: new Date(),
-    };
+    } as unknown as User;
     prismaService.user.create.mockResolvedValue(user);
-    await expect(service.create(user)).resolves.toBe(user);
+    await expect(service.create(user as Prisma.UserCreateInput)).resolves.toBe(user);
     expect(service).toBeDefined();
   });
 });

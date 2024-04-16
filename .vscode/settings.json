@@ -3,6 +3,7 @@
     "editor.defaultFormatter": "Prisma.prisma"
   },
   "cSpell.words": [
+    "golevelup",
     "localdev",
     "nestjs",
     "opentelemetry",

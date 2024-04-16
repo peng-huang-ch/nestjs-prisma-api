@@ -59,9 +59,9 @@ export class UsersController {
   @OtelMethodCounter()
   async getUser(@Param('id') id: string) {
     const currentSpan = this.traceSvc.getSpan();
-    currentSpan.addEvent('find user');
-    currentSpan.setAttribute('id', id);
-    currentSpan.end();
+    currentSpan?.addEvent('find user');
+    currentSpan?.setAttribute('id', id);
+    currentSpan?.end();
 
     return await this.usersMgr.getUserById(id);
   }

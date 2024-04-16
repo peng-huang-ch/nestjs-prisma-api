@@ -20,8 +20,8 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
 
-  const NODE_ENV: string = configService.get('NODE_ENV');
-  const HTTP_PORT: string = configService.get('HTTP_PORT');
+  const NODE_ENV: string = configService.get('NODE_ENV')!;
+  const HTTP_PORT: string = configService.get('HTTP_PORT')!;
 
   app.useGlobalInterceptors(new LoggerErrorInterceptor());
   app.useLogger(logger);
