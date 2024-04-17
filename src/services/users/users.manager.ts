@@ -20,12 +20,12 @@ export class UsersManager {
     return `users_id_${userId}`;
   }
 
-  async isAdmin(email: string): Promise<User> {
+  async isAdmin(email: string): Promise<User | null> {
     const where = { email, roles: { has: Role.Admin } };
     return await this.usersSvc.findFirst({ where });
   }
 
-  async getUserByEmail(email: string): Promise<User> {
+  async getUserByEmail(email: string): Promise<User | null> {
     const where = { email };
     return await this.usersSvc.findFirst({ where });
   }

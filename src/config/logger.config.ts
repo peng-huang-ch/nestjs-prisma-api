@@ -72,8 +72,11 @@ function getFormatters() {
     // Workaround for PinoInstrumentation (does not support latest version yet)
     log(object: Record<string, unknown>) {
       const span = trace.getSpan(context.active());
-      if (!span) return { ...object };
-      const { spanId, traceId } = trace.getSpan(context.active())?.spanContext();
+      if (!span) return object;
+      const spanContext = trace.getSpan(context.active())?.spanContext();
+      if (!spanContext) return object;
+
+      const { spanId, traceId } = spanContext;
       return { ...object, spanId, traceId, span_id: spanId, trace_id: traceId };
     },
   };

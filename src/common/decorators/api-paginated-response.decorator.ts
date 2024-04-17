@@ -13,7 +13,7 @@ export function getPagination(pagination?: ApiPaginatedQuery, ext?: Partial<ApiP
   let perPage = pagination?.perPage || ext?.perPage || 10;
   perPage = Math.max(+perPage || 10, 1);
 
-  let page = pagination?.page || ext.page || 0;
+  let page = pagination?.page || ext?.page || 0;
   page = Math.max(+page || 1, 1);
 
   const sortBy = pagination?.sortBy || ext?.sortBy || 'createdAt';

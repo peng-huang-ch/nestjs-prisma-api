@@ -8,8 +8,8 @@ export class UserEntity implements User {
   @ApiProperty({ required: false, nullable: true })
   name: string;
 
-  @ApiProperty({ required: false, nullable: true })
-  email: string | null;
+  @ApiProperty({ required: true, nullable: false })
+  email: string;
 
   @ApiProperty({ required: false, nullable: true })
   iconUrl: string | null;

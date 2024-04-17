@@ -4,7 +4,8 @@ import { redisStore } from 'cache-manager-ioredis-yet';
 import { parseURL } from 'ioredis/built/utils';
 
 export function getRedisOpt(configService: ConfigService) {
-  return Object.assign({ maxRetriesPerRequest: 20 }, parseURL(configService.get('REDIS_URL')));
+  const redisUrl = configService.get<string>('REDIS_URL')!;
+  return Object.assign({ maxRetriesPerRequest: 20 }, parseURL(redisUrl));
 }
 
 export function getRedisModuleOptions(configService: ConfigService) {
