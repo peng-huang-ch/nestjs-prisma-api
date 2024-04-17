@@ -21,10 +21,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.32.9
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: 'pnpm'
