@@ -1,6 +1,7 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 
+import { isEmpty } from 'lodash';
 import { OtelMethodCounter, Span, TraceService } from 'nestjs-otel';
 
 import { ApiPaginatedResponse, getPagination, MakeApi200Response, MakeApi400Response } from '@src/common';
@@ -34,7 +35,7 @@ export class UsersController {
     currentSpan?.end();
     const email = createUserDto.email;
     const used = await this.usersMgr.getUserByEmail(email);
-    if (used) throw new BadRequestException('email already used.');
+    if (!isEmpty(used)) throw new BadRequestException('email already used.');
     return this.usersMgr.createUser(createUserDto);
   }
 

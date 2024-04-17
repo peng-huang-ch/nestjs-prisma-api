@@ -42,25 +42,25 @@ cp .env.example .env
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Generate Prisma client:
 
 ```bash
-npm run prisma:generate
+pnpm run prisma:migrate
 ```
 
 Migrate database:
 
 ```bash
-npm run prisma:migrate:dev
+pnpm run prisma:migrate:dev
 ```
 
 Run the app:
 
 ```bash
-npm run start:dev
+pnpm run start:dev
 ```
 
 ### Deployment with docker
@@ -80,9 +80,9 @@ docker-compose up -d
 In Node.js Environment:
 
 ```bash
-npm install
-npm run build
-npm run start:prod
+pnpm install
+pnpm run build
+pnpm run start:prod
 ```
 
 ### Migrate database
@@ -90,13 +90,13 @@ npm run start:prod
 Development:
 
 ```bash
-npm run prisma:migrate:dev
+pnpm run prisma:migrate:dev
 ```
 
 Production:
 
 ```bash
-npm run prisma:migrate:deploy
+pnpm run prisma:migrate:deploy
 ```
 
 ## Overview

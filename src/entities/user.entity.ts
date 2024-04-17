@@ -8,7 +8,7 @@ export class UserEntity implements User {
   @ApiProperty({ required: false, nullable: true })
   name: string;
 
-  @ApiProperty({ required: true, nullable: false })
+  @ApiProperty({ required: false, nullable: true })
   email: string;
 
   @ApiProperty({ required: false, nullable: true })
