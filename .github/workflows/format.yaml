@@ -15,6 +15,9 @@ concurrency:
 jobs:
   code:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20]
     timeout-minutes: 10
 
     steps:
@@ -23,13 +26,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: ${{ matrix.node }}
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
-
       - name: Run Prettier
         run: npm run format:check
-
       - name: Run test
         run: npm run test
