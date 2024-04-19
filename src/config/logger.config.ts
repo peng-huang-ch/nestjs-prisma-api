@@ -64,6 +64,11 @@ function getMultiDestinationStream(app: string, level: pino.Level = 'info', file
   return pino.multistream(entries);
 }
 
+/**
+ * custom-formatters
+ * https://github.com/pinojs/pino-http?tab=readme-ov-file#custom-formatters
+ * @returns
+ */
 function getFormatters() {
   return {
     level: (label: string) => {
@@ -82,6 +87,33 @@ function getFormatters() {
   };
 }
 
+/**
+ * custom-serializers
+ * https://github.com/pinojs/pino-http?tab=readme-ov-file#custom-serializers--custom-log-attribute-keys
+ * @returns
+ */
+function getSerializers() {
+  return {
+    req(_req: SerializedRequest) {
+      const serialized = { method: _req.method, url: _req.url };
+      const request = _req.raw as Request;
+      const fields = pick(request, ['headers', 'query', 'body']);
+      Object.assign(serialized, fields);
+      return serialized;
+    },
+    res(response: SerializedResponse) {
+      const { statusCode: status, ...serialized } = response;
+      return Object.assign({ status }, serialized);
+    },
+    err(_err: SerializedError) {
+      const serialized = {
+        ..._err,
+      };
+      return serialized;
+    },
+  };
+}
+
 function getPinoHttpOption(level: string = 'info'): Options {
   return {
     // https://getpino.io/#/docs/api?id=timestamp-boolean-function
@@ -90,32 +122,14 @@ function getPinoHttpOption(level: string = 'info'): Options {
     level,
     quietReqLogger: false,
     timestamp: pino.stdTimeFunctions.isoTime,
-    formatters: getFormatters(),
     customAttributeKeys: {
       req: 'req',
       res: 'res',
       err: 'err',
       responseTime: 'taken(ms)',
     },
-    serializers: {
-      req(_req: SerializedRequest) {
-        const serialized = { method: _req.method, url: _req.url };
-        const request = _req.raw as Request;
-        const fields = pick(request, ['headers', 'query', 'body']);
-        Object.assign(serialized, fields);
-        return serialized;
-      },
-      res(response: SerializedResponse) {
-        const { statusCode: status, ...serialized } = response;
-        return Object.assign({ status }, serialized);
-      },
-      err(_err: SerializedError) {
-        const serialized = {
-          ..._err,
-        };
-        return serialized;
-      },
-    },
+    formatters: getFormatters(),
+    serializers: getSerializers(),
     redact: {
       paths: ['password', 'reqBody.password', 'user.password', 'reqBody.user.password'],
     },
