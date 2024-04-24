@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: '**'
   push:
-    branches: [dev, main]
+    branches: [dev, develop, main]
 
 # Cancel in-progress workflow runs on PRs when a new commit is pushed.
 # Does not cancel any runs on `develop` or `master` branches.
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 20]
+        node: [18]
     timeout-minutes: 10
 
     steps:
@@ -33,5 +33,7 @@ jobs:
         run: pnpm install
       - name: Run Prettier
         run: pnpm run format:check
+      - name: Run prisma genarate
+        run: pnpm run prisma:generate
       - name: Run test
         run: pnpm run test
