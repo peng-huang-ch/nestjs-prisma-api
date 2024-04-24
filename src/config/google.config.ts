@@ -1,5 +1,17 @@
 import { ConfigService } from '@nestjs/config';
 
+export function getUserFromGoogleProfile(obj: any) {
+  return {
+    googleId: obj.sub,
+    name: obj.name,
+    email: obj.email,
+    verified: obj.email_verified,
+    locale: obj.locale,
+    iconUrl: obj.picture,
+    googleProps: obj,
+  };
+}
+
 export function getGoogleOAuthOptions(configService: ConfigService) {
   const clientID = configService.get('GOOGLE_CLIENT_ID');
   const clientSecret = configService.get('GOOGLE_SECRET');

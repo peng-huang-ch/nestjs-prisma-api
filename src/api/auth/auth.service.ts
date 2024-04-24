@@ -7,7 +7,7 @@ import { type Request } from 'express';
 import { OAuth2Client as GoogleOAuth2Client } from 'google-auth-library';
 import { pick } from 'lodash';
 
-import { getGoogleAppOptions } from '@src/config';
+import { getGoogleAppOptions, getUserFromGoogleProfile } from '@src/config';
 import { UsersManager } from '@src/services';
 
 @Injectable()
@@ -47,16 +47,16 @@ export class AuthService {
     return true;
   }
 
-  async googleLogin(req: Request) {
-    const googleProps: any = req.user;
-    const email = googleProps?.email;
-    const name = googleProps?.name;
-    const googleId = googleProps.googleId;
-    const iconUrl = googleProps?.picture;
-    if (!email || !googleId) throw new ForbiddenException('failed to login with google');
+  private getDataFromGoogleProps(props: Record<string, any>) {
+    const { email, name, googleId, iconUrl, googleProps } = props;
+    return { googleId, name, email, iconUrl, googleProps };
+  }
 
-    const data = { googleId, googleProps, name, email, iconUrl };
-    const where = { googleId };
+  async googleLogin(props: Record<string, any>) {
+    const data = this.getDataFromGoogleProps(props);
+    if (!data.email || !data.googleId) throw new ForbiddenException('failed to login with google');
+
+    const where = { googleId: data.googleId };
     const doc = await this.usersMgr.login(where, data);
     return this.signToLogin(doc);
   }
@@ -73,17 +73,8 @@ export class AuthService {
     } catch (error) {
       throw new BadRequestException('invalid token');
     }
-
-    const googleProps: any = payload;
-    const googleId = payload['sub'];
-    const email = googleProps?.email;
-    const name = googleProps?.name;
-    const iconUrl = googleProps?.picture;
-    if (!email || !googleId) throw new ForbiddenException('failed to login with google');
-    const data = { googleId, googleProps, name, email, iconUrl };
-    const where = { googleId };
-    const doc = await this.usersMgr.login(where, data);
-    return this.signToLogin(doc);
+    const user = getUserFromGoogleProfile(payload);
+    return this.googleLogin(user);
   }
 
   async googleRevokeToken(req: Request) {
