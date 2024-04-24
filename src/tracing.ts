@@ -1,11 +1,21 @@
 /**
  * https://www.npmjs.com/package/@opentelemetry/sdk-node
  * https://github.com/open-telemetry/opentelemetry-js#package-version-compatibility
- * "@opentelemetry/auto-instrumentations-node": "^0.40.2"
- * "@opentelemetry/exporter-prometheus": "^0.45.1"
- * "@opentelemetry/resources": "1.18"
- * "@opentelemetry/sdk-metrics": "1.18"
- * "@opentelemetry/semantic-conventions": "1.18"
+ * opentelemetry libraries versions
+ * "@opentelemetry/api": "^1.8.0",
+ * "@opentelemetry/auto-instrumentations-node": "^0.44.0",
+ * "@opentelemetry/context-async-hooks": "1.23.0",
+ * "@opentelemetry/core": "1.23.0",
+ * "@opentelemetry/exporter-prometheus": "^0.50.0",
+ * "@opentelemetry/exporter-trace-otlp-http": "^0.50.0",
+ * "@opentelemetry/propagator-b3": "1.23.0",
+ * "@opentelemetry/propagator-jaeger": "1.23.0",
+ * "@opentelemetry/resources": "1.23.0",
+ * "@opentelemetry/sdk-metrics": "1.23.0",
+ * "@opentelemetry/sdk-node": "^0.50.0",
+ * "@opentelemetry/sdk-trace-base": "1.23.0",
+ * "@opentelemetry/semantic-conventions": "1.23.0",
+ * "@prisma/instrumentation": "^5.13.0",
  */
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
