@@ -16,6 +16,7 @@ This is an opinionated template for Nestjs prisma restful projects.
   - [pino-pretty](https://github.com/pinojs/pino-pretty) in development
   - [pino-loki](https://github.com/Julien-R44/pino-loki)
 
+- [x] health
 - [x] Authentication: [Passport](https://github.com/nestjs/passport)
   - JWT: [passport-jwt](https://www.passportjs.org/packages/passport-jwt/)
   - Google: [passport-google-oauth20](https://www.passportjs.org/packages/passport-google-oauth20/)
