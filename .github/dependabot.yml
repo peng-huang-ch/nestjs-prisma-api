@@ -5,27 +5,29 @@
 
 version: 2
 updates:
-  # GitHub Actions
+  # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     directory: /
+    schedule:
+      interval: weekly
     groups:
       github-actions:
         patterns:
           - '*' # Group all Actions updates into a single larger pull request
-    schedule:
-      interval: weekly
 
-  # npm - pnpm
+  # Maintain dependencies for npm
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'main'
-    labels:
-      - 'dependabot :robot:'
     schedule:
       interval: 'daily'
+    # Specify labels for npm pull requests
+    labels:
+      - 'dependabot'
+    # Allow up to 10 open pull requests for pip dependencies
+    open-pull-requests-limit: 10
     groups:
       deps:
-        applies-to: version-updates
         patterns:
           - '*'
         update-types:
