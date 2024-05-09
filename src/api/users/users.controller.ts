@@ -1,16 +1,17 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { ApiBearerAuth, ApiBody, ApiOkResponse, ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { BadRequestException, Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 
+import { Request } from 'express';
 import { isEmpty } from 'lodash';
-import { OtelMethodCounter, Span, TraceService } from 'nestjs-otel';
+import { TraceService } from 'nestjs-otel';
 
-import { ApiPaginatedResponse, getPagination, MakeApi200Response, MakeApi400Response } from '@src/common';
+import { Api200Res, Api400Res, ApiPaginatedRes, getPagination, JwtAuthGuard } from '@src/common';
 import { UserEntity } from '@src/entities';
 import { UsersManager } from '@src/services';
 
 import { CreateUserDto, QueryUsersDto, UpdateUserDto } from './dto';
 
-@ApiTags('users')
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(
@@ -18,17 +19,12 @@ export class UsersController {
     private readonly usersMgr: UsersManager,
   ) {}
 
+  @ApiOperation({ operationId: 'create-user', summary: 'create user' })
   @ApiBearerAuth()
-  @ApiOperation({ operationId: 'create_user', summary: 'create user' })
-  @MakeApi200Response(UserEntity)
-  @MakeApi400Response('email already used.')
-  @ApiBody({
-    isArray: false,
-    type: CreateUserDto,
-  })
+  @Api200Res(UserEntity)
+  @Api400Res('email already used.')
   @Post()
-  @Span('create_user')
-  @OtelMethodCounter()
+  @HttpCode(200)
   async createUser(@Body() createUserDto: CreateUserDto) {
     const currentSpan = this.traceSvc.getSpan();
     currentSpan?.addEvent('create user');
@@ -39,12 +35,11 @@ export class UsersController {
     return this.usersMgr.createUser(createUserDto);
   }
 
-  @ApiPaginatedResponse(UserEntity)
-  @ApiOperation({ operationId: 'get_users', summary: 'get user with pagination' })
-  @ApiQuery({ type: QueryUsersDto })
+  @ApiOperation({ operationId: 'get-users', summary: 'get users' })
+  @ApiPaginatedRes(UserEntity)
+  // @ApiQuery({ type: QueryUsersDto })
   @Get()
-  @Span()
-  @OtelMethodCounter()
+  @HttpCode(200)
   async getUsers(@Query() queryUsersDto: QueryUsersDto) {
     const pagination = getPagination(queryUsersDto);
     const where = {};
@@ -52,12 +47,10 @@ export class UsersController {
     return this.usersMgr.usersSvc.paginate({ where, ...pagination });
   }
 
-  @ApiOkResponse({ type: UserEntity })
   @ApiOperation({ operationId: 'get_user' })
   @ApiParam({ name: 'id', type: String, example: 'clra9rn8s0001wifc0wmwdavz' })
+  @ApiOkResponse({ type: UserEntity })
   @Get(':id')
-  @Span()
-  @OtelMethodCounter()
   async getUser(@Param('id') id: string) {
     const currentSpan = this.traceSvc.getSpan();
     currentSpan?.addEvent('find user');
@@ -67,16 +60,16 @@ export class UsersController {
     return await this.usersMgr.getUserById(id);
   }
 
-  @ApiOkResponse({ type: UserEntity })
-  @ApiOperation({ operationId: 'update_user', summary: 'update the user' })
+  @ApiOperation({ operationId: 'update-user', summary: 'update the user' })
+  @ApiBearerAuth()
   @ApiParam({ name: 'id', type: String, example: 'clra9rn8s0001wifc0wmwdavz' })
-  @ApiBody({
-    type: UpdateUserDto,
-  })
+  @ApiOkResponse({ type: UserEntity })
   @Patch(':id')
-  @Span()
-  @OtelMethodCounter()
-  updateUser(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  @UseGuards(JwtAuthGuard)
+  // @Span()
+  // @OtelMethodCounter()
+  updateUser(@Req() req: Request, @Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    if (req.user!.id !== id) throw new BadRequestException('invalid user id');
     const currentSpan = this.traceSvc.getSpan();
     currentSpan?.addEvent('patch user');
     currentSpan?.setAttribute('id', id);
@@ -85,13 +78,14 @@ export class UsersController {
     return this.usersMgr.updateUserById(id, updateUserDto);
   }
 
-  @ApiOkResponse({ type: UserEntity })
-  @ApiOperation({ operationId: 'remove_user', summary: 'remove the user' })
+  @ApiOperation({ operationId: 'remove-user', summary: 'remove the user' })
+  @ApiBearerAuth()
   @ApiParam({ name: 'id', type: String, example: 'clra9rn8s0001wifc0wmwdavz' })
+  @ApiOkResponse({ type: UserEntity })
   @Delete(':id')
-  @Span()
-  @OtelMethodCounter()
-  removeUser(@Param('id') id: string) {
+  @UseGuards(JwtAuthGuard)
+  removeUser(@Req() req: Request, @Param('id') id: string) {
+    if (req.user!.id !== id) throw new BadRequestException('invalid user id');
     return this.usersMgr.removeUserById(id);
   }
 }

@@ -8,7 +8,7 @@ import { JwtAuthGuard } from '@src/common';
 
 import { AuthService } from './auth.service';
 
-@ApiTags('auth')
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}

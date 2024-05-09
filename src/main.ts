@@ -27,10 +27,14 @@ async function bootstrap() {
   app.useLogger(logger);
   app.disable('x-powered-by');
 
-  const options = new DocumentBuilder().setTitle('nestjs-prisma - API description').setVersion('1.0').build();
+  const options = new DocumentBuilder().setTitle('nestjs-prisma - API description').setVersion('1.0').addBearerAuth().build();
 
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup('docs', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 
   await app.listen(HTTP_PORT);
 

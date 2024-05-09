@@ -48,7 +48,7 @@ export class ApiPaginatedQuery {
   sortOrder?: string;
 }
 
-export const ApiPaginatedResponse = <TModel extends Type<any>>(model: TModel) => {
+export const ApiPaginatedRes = <TModel extends Type<any>>(model: TModel) => {
   return applyDecorators(
     ApiExtraModels(model),
     ApiOkResponse({
@@ -85,11 +85,11 @@ export const ApiPaginatedResponse = <TModel extends Type<any>>(model: TModel) =>
   );
 };
 
-export const MakeApi200Response = <TModel extends Type<any>>(model: TModel) => {
+export const Api200Res = <TModel extends Type<any>>(model: TModel) => {
   return applyDecorators(ApiOkResponse({ type: model }));
 };
 
-export const MakeApi400Response = (message: string) => {
+export const Api400Res = (message: string) => {
   return applyDecorators(
     ApiBadRequestResponse({
       schema: {

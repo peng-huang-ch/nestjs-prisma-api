@@ -4,6 +4,7 @@ import { Prisma, User } from '@prisma/client';
 
 import { Cache } from 'cache-manager';
 import { isEmpty, omit } from 'lodash';
+import { OtelMethodCounter, Span } from 'nestjs-otel';
 
 import { Role } from '@src/common';
 
@@ -43,6 +44,8 @@ export class UsersManager {
     );
   }
 
+  @Span()
+  @OtelMethodCounter()
   async removeUserById(userId: string): Promise<User> {
     const key = this.getUserIdCacheKey(userId);
     const where = { id: userId };
@@ -51,10 +54,14 @@ export class UsersManager {
     return removed;
   }
 
+  @Span()
+  @OtelMethodCounter()
   async createUser(data: Prisma.UserCreateInput): Promise<User> {
     return await this.usersSvc.create(data);
   }
 
+  @Span()
+  @OtelMethodCounter()
   async updateUserById(userId: string, doc: Prisma.UserUpdateInput): Promise<User> {
     const key = this.getUserIdCacheKey(userId);
     const where = { id: userId };
