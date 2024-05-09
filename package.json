@@ -100,7 +100,7 @@
     "@types/node": "^20.10.5",
     "@types/passport-google-oauth20": "^2.0.14",
     "@types/passport-jwt": "^4.0.0",
-    "@types/supertest": "^2.0.12",
+    "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "commitlint": "^19.2.2",
