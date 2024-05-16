@@ -46,7 +46,7 @@
     "@nestjs/swagger": "^7.1.17",
     "@nestjs/terminus": "^10.2.3",
     "@opentelemetry/api": "^1.8.0",
-    "@opentelemetry/auto-instrumentations-node": "^0.46.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.46.1",
     "@opentelemetry/context-async-hooks": "1.24.1",
     "@opentelemetry/core": "1.24.1",
     "@opentelemetry/exporter-prometheus": "^0.51.1",
