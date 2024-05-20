@@ -112,7 +112,7 @@ dependencies:
     version: 6.1.0(@nestjs/common@10.3.8)(@nestjs/core@10.3.8)
   nestjs-pino:
     specifier: ^4.1.0
-    version: 4.1.0(@nestjs/common@10.3.8)(pino-http@9.0.0)
+    version: 4.1.0(@nestjs/common@10.3.8)(pino-http@10.1.0)
   passport:
     specifier: ^0.7.0
     version: 0.7.0
@@ -129,8 +129,8 @@ dependencies:
     specifier: ^9.1.0
     version: 9.1.0
   pino-http:
-    specifier: ^9.0.0
-    version: 9.0.0
+    specifier: ^10.1.0
+    version: 10.1.0
   pino-loki:
     specifier: ^2.3.0
     version: 2.3.0
@@ -6918,7 +6918,7 @@ packages:
       response-time: 2.3.2
     dev: false
 
-  /nestjs-pino@4.1.0(@nestjs/common@10.3.8)(pino-http@9.0.0):
+  /nestjs-pino@4.1.0(@nestjs/common@10.3.8)(pino-http@10.1.0):
     resolution: {integrity: sha512-I6zcddauD2TNMRbsraEIxNUvHcz0El5QRUYH5eY1+pBzj7R17U+Yoyypoc+akVdSLWJ1r0kDYAZPy2mlhXv6vw==}
     engines: {node: '>= 14'}
     requiresBuild: true
@@ -6927,7 +6927,7 @@ packages:
       pino-http: ^6.4.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
     dependencies:
       '@nestjs/common': 10.3.8(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
-      pino-http: 9.0.0
+      pino-http: 10.1.0
     dev: false
 
   /node-abort-controller@3.1.1:
@@ -7315,12 +7315,12 @@ packages:
       split2: 4.2.0
     dev: false
 
-  /pino-http@9.0.0:
-    resolution: {integrity: sha512-Q9QDNEz0vQmbJtMFjOVr2c9yL92vHudjmr3s3m6J1hbw3DBGFZJm3TIj9TWyynZ4GEsEA9SOtni4heRUr6lNOg==}
+  /pino-http@10.1.0:
+    resolution: {integrity: sha512-rQgRaVfmZnDcOZXvZUUkiG3wDYVTSyYWAhxkGUgw3py3Y1nFXucRSLYPB5HKgG64oy9gLiDARiQxxWXnI1u3zA==}
     dependencies:
       get-caller-file: 2.0.5
-      pino: 8.21.0
-      pino-std-serializers: 6.2.2
+      pino: 9.1.0
+      pino-std-serializers: 7.0.0
       process-warning: 3.0.0
     dev: false
 
@@ -7354,29 +7354,8 @@ packages:
       strip-json-comments: 3.1.1
     dev: false
 
-  /pino-std-serializers@6.2.2:
-    resolution: {integrity: sha512-cHjPPsE+vhj/tnhCy/wiMh3M3z3h/j15zHQX+S9GkTBgqJuTuJzYJ4gUyACLhDaJ7kk9ba9iRDmbH2tJU03OiA==}
-    dev: false
-
   /pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
-    dev: false
-
-  /pino@8.21.0:
-    resolution: {integrity: sha512-ip4qdzjkAyDDZklUaZkcRFb2iA118H9SgRh8yzTkSQK8HilsOJF7rSY8HoW5+I0M46AZgX/pxbprf2vvzQCE0Q==}
-    hasBin: true
-    dependencies:
-      atomic-sleep: 1.0.0
-      fast-redact: 3.5.0
-      on-exit-leak-free: 2.1.2
-      pino-abstract-transport: 1.2.0
-      pino-std-serializers: 6.2.2
-      process-warning: 3.0.0
-      quick-format-unescaped: 4.0.4
-      real-require: 0.2.0
-      safe-stable-stringify: 2.4.3
-      sonic-boom: 3.8.1
-      thread-stream: 2.7.0
     dev: false
 
   /pino@9.1.0:
@@ -8328,12 +8307,6 @@ packages:
   /text-table@0.2.0:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
-
-  /thread-stream@2.7.0:
-    resolution: {integrity: sha512-qQiRWsU/wvNolI6tbbCKd9iKaTnCXsTwVxhhKM6nctPdujTyztjlbUkUTUymidWcMnZ5pWR0ej4a0tjsW021vw==}
-    dependencies:
-      real-require: 0.2.0
-    dev: false
 
   /thread-stream@3.0.0:
     resolution: {integrity: sha512-oUIFjxaUT6knhPtWgDMc29zF1FcSl0yXpapkyrQrCGEfYA2HUZXCilUtKyYIv6HkCyqSPAMkY+EG0GbyIrNDQg==}
