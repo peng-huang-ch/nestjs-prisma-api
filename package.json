@@ -68,7 +68,7 @@
     "google-auth-library": "^9.10.0",
     "ioredis": "^5.3.2",
     "lodash": "^4.17.21",
-    "nestjs-otel": "^6.1.0",
+    "nestjs-otel": "^6.1.1",
     "nestjs-pino": "^4.1.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
