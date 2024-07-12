@@ -60,7 +60,7 @@
     "@opentelemetry/semantic-conventions": "1.25.1",
     "@prisma/client": "^5.16.2",
     "@prisma/instrumentation": "^5.16.2",
-    "cache-manager": "^5.7.1",
+    "cache-manager": "^5.7.2",
     "cache-manager-ioredis-yet": "^2.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
