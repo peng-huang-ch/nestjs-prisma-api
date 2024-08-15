@@ -123,7 +123,7 @@ swagger
 `ingress`
 ![ingress](./docs/ingress.jpg)
 
-## Thanks the following projects
+## Acknowledgements
 
 - [nestjs-prisma](https://github.com/notiz-dev/nestjs-prisma)
 - [nestjs-otel](https://github.com/pragmaticivan/nestjs-otel)
