@@ -163,10 +163,10 @@ export function getLoggerModuleOptions(configService: ConfigService): Params {
 
   return {
     pinoHttp: [getPinoHttpOption(level), getMultiDestinationStream(app, level, filename, loki)],
+    // (See https://docs.nestjs.com/middleware#excluding-routes for options)
     exclude: [
       { method: RequestMethod.GET, path: '/health' },
-      { method: RequestMethod.GET, path: '/queues/*' },
-      { method: RequestMethod.GET, path: '/queues/api/*' },
+      { method: RequestMethod.GET, path: '/queues/(.*)' },
     ],
   };
 }
