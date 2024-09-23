@@ -76,7 +76,7 @@
     "passport-local": "^1.0.0",
     "pino": "^9.4.0",
     "pino-http": "^10.3.0",
-    "pino-loki": "^2.3.0",
+    "pino-loki": "^2.3.1",
     "pino-pretty": "^11.2.2",
     "pino-std-serializers": "^7.0.0",
     "prisma-cursorstream": "^0.3.0",
