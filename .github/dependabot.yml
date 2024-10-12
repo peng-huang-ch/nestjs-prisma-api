@@ -30,6 +30,11 @@ updates:
       deps:
         patterns:
           - '*'
+        # Define patterns to exclude dependencies from the group (based on
+        # dependency name)
+        exclude-patterns:
+          - 'express'
+          - '@types/express'
         update-types:
           - 'minor'
           - 'patch'
