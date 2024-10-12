@@ -21,6 +21,10 @@ updates:
     target-branch: 'main'
     schedule:
       interval: 'daily'
+    ignore:
+      - dependency-name: 'express'
+        # For Express, ignore all Dependabot updates for version 4 and 5
+        versions: ['4.x', '5.x']
     # Specify labels for npm pull requests
     labels:
       - 'dependabot'
