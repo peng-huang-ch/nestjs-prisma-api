@@ -172,8 +172,8 @@ importers:
         specifier: ^9.2.0
         version: 9.2.0
       '@golevelup/ts-jest':
-        specifier: ^0.5.6
-        version: 0.5.6
+        specifier: ^0.6.0
+        version: 0.6.0
       '@nestjs/cli':
         specifier: ^10.4.7
         version: 10.4.7
@@ -554,8 +554,8 @@ packages:
     resolution: {integrity: sha512-ulqQu4KMr1/sTFIYvqSdegHT8NIkt66tFAkugGnHA+1WAfEn6hMzNR+svjXGFRVLnapxvej67Z/LwchFrnLBUg==}
     engines: {node: '>=18.0.0', npm: '>=9.0.0'}
 
-  '@golevelup/ts-jest@0.5.6':
-    resolution: {integrity: sha512-QnxP42Qu9M2UogdrF2kxpZcgWeW9R3WoUr+LdpcsbkvX3LjEoDYgrJ/PnV/QUCbxB1gaKbhR0ZxlDxE1cPkpDg==}
+  '@golevelup/ts-jest@0.6.0':
+    resolution: {integrity: sha512-TwJGSPCGd2K+TjYlMvtX7J6K14mLNrQSbknKgXfFX/mdCumRzE6OrMyG1VOFjtCIRMPgreldfVfUdy6tJMbVFA==}
 
   '@grpc/grpc-js@1.12.2':
     resolution: {integrity: sha512-bgxdZmgTrJZX50OjyVwz3+mNEnCTNkh3cIqGPWVNeW9jX6bn1ZkU80uPd+67/ZpIJIjRQ9qaHCjhavyoWYxumg==}
@@ -5066,7 +5066,7 @@ snapshots:
 
   '@faker-js/faker@9.2.0': {}
 
-  '@golevelup/ts-jest@0.5.6': {}
+  '@golevelup/ts-jest@0.6.0': {}
 
   '@grpc/grpc-js@1.12.2':
     dependencies:
