@@ -135,8 +135,8 @@ importers:
         specifier: ^10.3.0
         version: 10.3.0
       pino-loki:
-        specifier: ^2.3.1
-        version: 2.3.1
+        specifier: ^2.4.0
+        version: 2.4.0
       pino-pretty:
         specifier: ^11.3.0
         version: 11.3.0
@@ -3831,17 +3831,14 @@ packages:
     resolution: {integrity: sha512-xUXwsxNjwTQ8K3GnT4pCJm+xq3RUPQbmkYJTP5aFIfNIvbcc/4MUxgBaaRSZJ6yGJZiGSyYlM6MzwTsRk8SYCg==}
     engines: {node: '>=12'}
 
-  pino-abstract-transport@1.2.0:
-    resolution: {integrity: sha512-Guhh8EZfPCfH+PMXAb6rKOjGQEoy0xlAIn+irODG5kgfYV+BQ0rGYYWTIel3P5mmyXqkYkPmdIkywsn6QKUR1Q==}
-
   pino-abstract-transport@2.0.0:
     resolution: {integrity: sha512-F63x5tizV6WCh4R6RHyi2Ml+M70DNRXt/+HANowMflpgGFMAym/VKm6G7ZOQRjqN7XbGxK1Lg9t6ZrtzOaivMw==}
 
   pino-http@10.3.0:
     resolution: {integrity: sha512-kaHQqt1i5S9LXWmyuw6aPPqYW/TjoDPizPs4PnDW4hSpajz2Uo/oisNliLf7We1xzpiLacdntmw8yaZiEkppQQ==}
 
-  pino-loki@2.3.1:
-    resolution: {integrity: sha512-YCfLpxDntAhHq9AVmtvoVL76NUWWEUa0oFHwDs7nNaxWKV+XMaHk4HfZ9uixM5QHSfMdpOwXbY8rBFUVtyvWpg==}
+  pino-loki@2.4.0:
+    resolution: {integrity: sha512-PN0BQ5TSGRuFI3jSiBIOJ3G8A5wSKGOPgKCseNuKdwnChV+rATAmfZqDo7lq0pDtvifSsBmXhw1gjv69J9bg9g==}
     hasBin: true
 
   pino-pretty@11.3.0:
@@ -9022,11 +9019,6 @@ snapshots:
 
   picomatch@4.0.1: {}
 
-  pino-abstract-transport@1.2.0:
-    dependencies:
-      readable-stream: 4.5.2
-      split2: 4.2.0
-
   pino-abstract-transport@2.0.0:
     dependencies:
       split2: 4.2.0
@@ -9038,10 +9030,10 @@ snapshots:
       pino-std-serializers: 7.0.0
       process-warning: 4.0.0
 
-  pino-loki@2.3.1:
+  pino-loki@2.4.0:
     dependencies:
       commander: 12.1.0
-      pino-abstract-transport: 1.2.0
+      pino-abstract-transport: 2.0.0
       pump: 3.0.2
 
   pino-pretty@11.3.0:
