@@ -99,8 +99,8 @@ importers:
         specifier: ^0.14.0
         version: 0.14.1
       dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
+        specifier: ^16.4.6
+        version: 16.4.6
       google-auth-library:
         specifier: ^9.15.0
         version: 9.15.0
@@ -147,8 +147,8 @@ importers:
         specifier: ^0.3.0
         version: 0.3.0(@prisma/client@5.22.0(prisma@5.22.0))
       prisma-extension-pagination:
-        specifier: ^0.7.4
-        version: 0.7.4(@prisma/client@5.22.0(prisma@5.22.0))
+        specifier: ^0.7.5
+        version: 0.7.5(@prisma/client@5.22.0(prisma@5.22.0))
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -2398,6 +2398,10 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
+  dotenv@16.4.6:
+    resolution: {integrity: sha512-JhcR/+KIjkkjiU8yEpaB/USlzVi3i5whwOjpIRNGi9svKEXZSe+Qp6IWAjFjv+2GViAoDRCUv/QLNziQxsLqDg==}
+    engines: {node: '>=12'}
+
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
@@ -3912,10 +3916,10 @@ packages:
     peerDependencies:
       '@prisma/client': ^5.1.1
 
-  prisma-extension-pagination@0.7.4:
-    resolution: {integrity: sha512-MmfyinDbcTucvttlO8UOrLqKW7DxlXe3ToiUZcLbvhGHHPewHKKWvucVnLHsYSzEIbEE1YfK/hsYdmpoRzkAAg==}
+  prisma-extension-pagination@0.7.5:
+    resolution: {integrity: sha512-tMcdOKryuqMrErsf14bmTKPtv25jJ0Cr1799dCr6AXZukrKf7Jz7MEtFD9VUuh+swsq1dYYJQVvmLUlzgAObyA==}
     peerDependencies:
-      '@prisma/client': ^4.9.0 || ^5.0.0
+      '@prisma/client': ^4.9.0 || ^5.0.0 || ^6.0.0
 
   prisma@5.22.0:
     resolution: {integrity: sha512-vtpjW3XuYCSnMsNVBjLMNkTj6OZbudcPPTPYHqX0CJfpcdWciI1dM8uHETwmDxxiqEwCIE6WvXucWUetJgfu/A==}
@@ -7280,6 +7284,8 @@ snapshots:
 
   dotenv@16.4.5: {}
 
+  dotenv@16.4.6: {}
+
   eastasianwidth@0.2.0: {}
 
   ecdsa-sig-formatter@1.0.11:
@@ -9109,7 +9115,7 @@ snapshots:
     dependencies:
       '@prisma/client': 5.22.0(prisma@5.22.0)
 
-  prisma-extension-pagination@0.7.4(@prisma/client@5.22.0(prisma@5.22.0)):
+  prisma-extension-pagination@0.7.5(@prisma/client@5.22.0(prisma@5.22.0)):
     dependencies:
       '@prisma/client': 5.22.0(prisma@5.22.0)
 
